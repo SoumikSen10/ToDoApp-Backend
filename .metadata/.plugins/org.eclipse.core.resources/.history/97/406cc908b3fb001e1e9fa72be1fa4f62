@@ -1,0 +1,9 @@
+package com.project.todoapp.todoapplication.todo;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TodoService 
+{
+  private static List<Todo> todos = new ArrayList<>();
+}

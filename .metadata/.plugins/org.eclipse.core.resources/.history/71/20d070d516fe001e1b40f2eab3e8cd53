@@ -1,0 +1,4 @@
+spring.application.name=todo-application
+logging.level.org.springframework=info
+
+spring.datasource.url=jdbc:h2:mem:ef496085-8f09-48d7-8798-ed64b5150311

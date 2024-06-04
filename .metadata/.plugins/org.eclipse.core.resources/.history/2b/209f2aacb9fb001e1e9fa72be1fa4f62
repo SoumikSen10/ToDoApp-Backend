@@ -1,0 +1,17 @@
+package com.project.todoapp.todoapplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class TodoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TodoApplication.class, args);
+	}
+
+}
+
+    // http://localhost:3000/ to 8080
+   //  Cross Origin Requests
+   //  Allow all requests only from http://localhost:3000/

@@ -1,0 +1,35 @@
+package com.project.todoapp.todoapplication.basic;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class BasicAuthenticationSecurityConfiguration 
+{
+   /* 1) Filter Chain for spring security
+    * 2) By default authenticates all requests
+    * 3) We want to add basic authentication here
+    * 4) Disabling csrf
+    * 5) Whenever we have sessions it's very imp to enable csrf
+    * 6) We are not having any sessions hence we are basically creating a stateless rest api
+    */
+	
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
+	{
+		//authenticating all http requests here
+		http.authorizeHttpRequests(
+				auth -> auth.anyRequest().authenticated()
+				);
+		//configuring basic authentication (a popup comes up for username and password)
+		 http.httpBasic(Customizer.withDefaults());
+		//stateless rest api
+		 http.sessionManagement(
+				 session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).csrf().disable();
+		return http.build();
+	}
+}
